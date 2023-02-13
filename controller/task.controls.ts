@@ -141,3 +141,35 @@ export const UnCompleteTask = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+//completed 
+const CompleteTask = async (req: Request, res: Response) => {
+  try {
+    const getUser = await UserModel.findById(req.params.userID);
+
+    if (getUser) {
+      const completed = await taskModel.findByIdAndUpdate(
+        req.params.TaskID,
+        {
+          status: true,
+        },
+        {
+          new: true,
+        }
+      );
+      return res.status(200).json({
+        message: "updated successfully",
+        data: completed,
+      });
+    } else {
+      return res.status(400).json({
+        message: "Access Denied",
+      });
+    }
+  } catch (err) {
+    return res.status(404).json({
+      message: "an error occurred While Creating task",
+    });
+  }
+};
