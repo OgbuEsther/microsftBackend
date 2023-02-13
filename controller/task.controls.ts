@@ -112,7 +112,7 @@ export const updatetasks = async (
   }
 };
 
-const UnCompleteTask = async (req: Request, res: Response) => {
+export const UnCompleteTask = async (req: Request, res: Response) => {
   try {
     const getUser = await UserModel.findById(req.params.userID);
 
