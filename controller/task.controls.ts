@@ -70,6 +70,15 @@ export const createTasks = async(req:Request , res:Response ):Promise<Response> 
 }
 
 
+//single get
+export const getSingleTask = async (req: Request, res: Response) => {
+  const myTask = await taskModel.findById(req.params.id);
+  res.status(200).json({
+    message: "found",
+    data: myTask,
+  });
+};
+
 //updating tasks
 
 export const updatetasks = async(req:Request , res:Response):Promise<Response> =>{
