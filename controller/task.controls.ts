@@ -142,9 +142,8 @@ export const UnCompleteTask = async (req: Request, res: Response) => {
   }
 };
 
-
-//completed 
-const CompleteTask = async (req: Request, res: Response) => {
+//completed
+export const CompleteTask = async (req: Request, res: Response) => {
   try {
     const getUser = await UserModel.findById(req.params.userID);
 
